@@ -8,8 +8,9 @@ fs.mkdir(folderDest, { recursive: true }, (err) => {
   if (err) console.log(err);
 });
 
-fs.readdir(folderSrc, (err, files) => {
+fs.readdir(folderDest, (err, files) => {
   if (err) console.log(err);
+  if (files.length === 0) copyFiles();
   let delFiles = 0;
   for (const file of files) {
     const filePath = path.join(folderDest, file);
